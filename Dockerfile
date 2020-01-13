@@ -1,4 +1,4 @@
-FROM rasa/rasa
+FROM rasa/rasa:1.5.1
 MAINTAINER Abhishek
 
 ## RUN apt-get update && apt-get install -y python3 python3-pip
@@ -18,7 +18,7 @@ ADD ./data /app/data/
 ADD ./domain.yml /app/
 ADD ./config.yml /app/
 
-RUN chmod +x /app/scripts/*
+## RUN chmod +x /app/scripts/*
 
 ENTRYPOINT []
 CMD /app/scripts/start_services.sh
