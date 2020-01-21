@@ -9,4 +9,5 @@ rasa run actions --actions app.actions&
 rasa run --model /app/models --enable-api \
         --endpoints /app/config/endpoints.yml \
         --credentials /app/config/credentials.yml \
+        --cors '*' \ 
         -p 8080
