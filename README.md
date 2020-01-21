@@ -1,5 +1,3 @@
-[ ![Codeship Status for samik-saha/rasa-chatbot](https://app.codeship.com/projects/6476d760-e5f7-0136-cc6f-426618709d8e/status?branch=master)](https://app.codeship.com/projects/319332)
-
 # Sample chatbot with rasa stack
 
 It uses the rasa stack (rasa core/nlu/actions) to implement a simple bot which responds user messages.
@@ -9,8 +7,8 @@ It uses the rasa stack (rasa core/nlu/actions) to implement a simple bot which r
 #### Using docker
 Both action server and rasa-core runs as separate processes in the same container
 ```
-docker build -t rasa-chatbot .
-docker run -it --rm -p 5005:5005 -e PORT=5005 rasa-chatbot
+docker build -t rasa-ibot .
+docker run -it --rm -p 8080:8080 -e PORT=8080 rasa-ibot
 ```
 It starts a webserver with rest api and listens for messages at localhost:5005
 
@@ -18,7 +16,7 @@ It starts a webserver with rest api and listens for messages at localhost:5005
 
 ```bash
 curl --request POST \
-  --url http://localhost:5005/webhooks/rest/webhook \
+  --url http://localhost:8080/webhooks/rest/webhook \
   --header 'content-type: application/json' \
   --data '{
     "message": "Hi"
@@ -51,19 +49,11 @@ docker run --rm --volume $(pwd):/app \
           rasa train --config config/config.yml
 ```
 
-## Deploy to Heroku
-On heroku free tier we can start two containers using two dynos, but there isn't a way for the containers to communicate with each other on Heroku. So, we push everything (actions server/rasa core/nlu) in the same container.
+## Deploy to GCP
 
 ```bash
-heroku container:push web
-heroku container:release web
 ```
 
-Another option would be to create a separate app altogether for actions server (nlu server can also be run as a separate app), which then can communicate with each other over http.
-
-## Integration with Facebook
-rasa supports integration with multiple channels. Apart from exposing the REST api over http, we can integrate with facebook. 
-
-Go to https://developers.facebook.com and creat an app. We can handle messages sent to a facebook page from our app. To do so add messenger to the facebook app and subscribe to a page. Update app secret and page token in config/credentials.yml. On the facebook app, update the webhook url to the deployed heroku app (https://rasa-chatbot.herokuapp.com/webhooks/facebook/webhook).
-
+## Integration with Web
+rasa supports integration with multiple channels. Like exposing the REST api over http
 
