@@ -6,8 +6,4 @@
 rasa run actions --actions app.actions&
 
 # Start rasa server with nlu model
-rasa run --model /app/models --enable-api \
-        --endpoints /app/config/endpoints.yml \
-        --credentials /app/config/credentials.yml \
-        --cors '*' \ 
-        -p 8080
+rasa run --model /app/models --enable-api --log-file rasaibotout.log --endpoints /app/config/endpoints.yml --credentials /app/config/credentials.yml --cors '*' -p 8080
