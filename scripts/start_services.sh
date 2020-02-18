@@ -3,6 +3,7 @@
 ### This script is defined in the CMD option in Dockerfile
 
 # Start actions server in background
+cd /app/actions
 rasa run actions --actions app.actions -v&
 
 # Start rasa server with nlu model
