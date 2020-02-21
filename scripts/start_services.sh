@@ -7,4 +7,4 @@ cd /app/actions
 rasa run actions --actions actions -v&
 
 # Start rasa server with nlu model
-rasa run --model /app/models --enable-api --log-file rasaibotout.log --endpoints /app/config/endpoints.yml --credentials /app/config/credentials.yml --cors '*' -p 5005
+rasa run --model /app/models --enable-api --log-file rasaibotout.log --endpoints /app/config/endpoints.yml --credentials /app/config/credentials.yml --cors '*' -p $PORT
