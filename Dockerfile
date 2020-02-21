@@ -18,7 +18,9 @@ ADD ./data /app/data/
 ADD ./domain.yml /app/
 ADD ./config.yml /app/
 
-## RUN chmod +x /app/scripts/*
+USER ROOT
+RUN chmod +x /app/scripts/*
+USER u10870
 
 ENTRYPOINT []
 CMD /app/scripts/start_services.sh
