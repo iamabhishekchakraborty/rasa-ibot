@@ -54,6 +54,11 @@ docker run --rm --volume $(pwd):/app \
 ```bash
 ```
 
+## Deploy to Heroku
+
+```bash
+```
+
 ## Integration with Web
 rasa supports integration with multiple channels. Like exposing the REST api over http
 
